@@ -37,8 +37,7 @@ conda install pandas
     - export PATH="$HOME/anaconda3_linux/bin:$PATH"
     - exit / reconnect
     - conda install ...
-    - git clone https://github.com/mendelevium/nwsfx-app
+    - git clone https://github.com/mendelevium/Final-Project
     - cd nwsfx-app
     - export FLASK_APP=nwsfx_flask_app.py
     - flask run --host=0.0.0.0
-
