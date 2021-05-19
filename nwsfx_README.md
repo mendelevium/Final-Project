@@ -38,6 +38,6 @@ conda install pandas
     - exit / reconnect
     - conda install ...
     - git clone https://github.com/mendelevium/Final-Project
-    - cd nwsfx-app
+    - cd Final-Project
     - export FLASK_APP=nwsfx_flask_app.py
     - flask run --host=0.0.0.0

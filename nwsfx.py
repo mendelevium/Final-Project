@@ -29,37 +29,6 @@ nlp = en_core_web_sm.load()
 #nltk.download('vader_lexicon')
 sid = SentimentIntensityAnalyzer()
 
-
-class Lemmatizer(BaseEstimator, TransformerMixin):
-    def __init__(self):
-        self.lemmatizer = WordNetLemmatizer()
-
-    def fit(self, X, y):
-        return self
-
-    def transform(self, X):
-        return  X.apply(lambda text: " ".join([self.lemmatizer.lemmatize(word) for word in text.split()]))
-
-
-def clean_text(text):
-    text = re.sub(r'<.*?>', '', text)
-    text = text.lower()
-    text = re.sub('\\s', ' ', text)
-    text = re.sub("[^a-zA-Z' ]", "", text)
-    text = re.sub(' +', ' ', text)
-    #text = text.split(' ')
-    return text
-
-tfidf = TfidfVectorizer(
-    stop_words="english",
-    preprocessor=clean_text,
-    ngram_range=(1, 2),
-    max_df=0.95,
-    min_df=2,
-    max_features=2000
-)
-
-
 # load in house models
 #tfidf_fit = joblib.load('models/tfidf_fit.pkl')
 #right_bias = keras.models.load_model('models/right_bias_model-FFNN_2000_1000_500_100-epochs_30_acc_91.h5')
@@ -170,6 +139,35 @@ def get_metrics(url):
     return m[0]
 
 if __name__ == "__main__":
-    print("person mod is run directly")
+
+    class Lemmatizer(BaseEstimator, TransformerMixin):
+        def __init__(self):
+            self.lemmatizer = WordNetLemmatizer()
+
+        def fit(self, X, y):
+            return self
+
+        def transform(self, X):
+            return  X.apply(lambda text: " ".join([self.lemmatizer.lemmatize(word) for word in text.split()]))
+
+
+    def clean_text(text):
+        text = re.sub(r'<.*?>', '', text)
+        text = text.lower()
+        text = re.sub('\\s', ' ', text)
+        text = re.sub("[^a-zA-Z' ]", "", text)
+        text = re.sub(' +', ' ', text)
+        #text = text.split(' ')
+        return text
+
+    tfidf = TfidfVectorizer(
+        stop_words="english",
+        preprocessor=clean_text,
+        ngram_range=(1, 2),
+        max_df=0.95,
+        min_df=2,
+        max_features=2000
+    )
+    
 else:
     print("person mod is imported into another module")
