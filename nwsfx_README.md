@@ -43,7 +43,7 @@ More infos on deployement in production:[codementor](https://www.codementor.io/@
 
 We've seen a lot of biased media coverage in the last few years and the phenomenon seems to be accelerating. The filter bubble amplify respective views of readers by exposing them to even more biased content.
 
-![Media Bias](img/AllSidesMediaBiasChart-Version4.1.jpg)
+![Media Bias](img/AllSidesMediaBiasChart-Version4.1.jpg =400x)
 
 The idea is to break this cycle by creating a simple tool to identify bias in order to deliver a more balanced news feed to the readers.
 
@@ -55,13 +55,13 @@ The dataset doesn't contain the text (only the url) so the articles must be scra
 
 ## Models
 
-*Major components*:
+- **Major components:**
     - Newspaper3k (articles extraction)
     - NLTK (sentiments analysis, lemmatizer)
     - Spacy (entities recognition, text processing)
     - Custom models (bias, opinion)
 
-*Custom models*:
+- **Custom models:**
     - TF-IDF / SVM
     - FFNN
     - RNN (GRU, LSTM)
@@ -70,7 +70,7 @@ The dataset doesn't contain the text (only the url) so the articles must be scra
 
 The API is intended to be used as an input to create a better newsfeed.
 
-Flask app with 3 simple POST methods using an URL as input:
+- **Flask app with 3 simple POST methods using an URL as input:**
     - /summary : return important informations about an article (date, author, title, summary, image)
     - /metrics : return the bias (left, rigth) and if the article is an opinion
     - /entities : return most frequent entities (subjects) in an article and the sentiment associated with it
