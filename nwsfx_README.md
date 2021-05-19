@@ -37,13 +37,13 @@ conda install pandas
     - export FLASK_APP=nwsfx_flask_app.py
     - flask run --host=0.0.0.0
 
-More infos on deployement in production:[codementor](https://www.codementor.io/@jqn/deploy-a-flask-app-on-aws-ec2-13hp1ilqy2)
+More infos on deployement in production: [codementor](https://www.codementor.io/@jqn/deploy-a-flask-app-on-aws-ec2-13hp1ilqy2)
 
 ## The Idea
 
 We've seen a lot of biased media coverage in the last few years and the phenomenon seems to be accelerating. The filter bubble amplify respective views of readers by exposing them to even more biased content.
 
-![Media Bias](img/AllSidesMediaBiasChart-Version4.1.jpg =400x)
+![Media Bias](img/AllSidesMediaBiasChart-Version4.1.jpg)
 
 The idea is to break this cycle by creating a simple tool to identify bias in order to deliver a more balanced news feed to the readers.
 

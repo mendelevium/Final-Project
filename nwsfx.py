@@ -1,39 +1,23 @@
 # general
 import pandas as pd
-#import numpy as np
 import re
 from collections import Counter
 import statistics
 
-# preprocessing
-#from sklearn.feature_extraction.text import TfidfVectorizer
-#from sklearn.base import TransformerMixin, BaseEstimator
-
 # nlp
 import newspaper
-#import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-#from nltk.stem import WordNetLemmatizer
-#import spacy
-#from spacy import displacy
 import en_core_web_sm
 
 # models
 import joblib
-#from tensorflow import keras
-
 
 
 # load pretrained models
-#python -m spacy download en_core_web_sm
 nlp = en_core_web_sm.load()
-#nltk.download('vader_lexicon')
 sid = SentimentIntensityAnalyzer()
 
 # load in house models
-#tfidf_fit = joblib.load('models/tfidf_fit.pkl')
-#right_bias = keras.models.load_model('models/right_bias_model-FFNN_2000_1000_500_100-epochs_30_acc_91.h5')
-#left_bias = keras.models.load_model('models/left_bias_model-FFNN_2000_1000_500_100-epochs_30_acc_85.h5')
 right_bias = joblib.load('models/right_bias_tfidf_svc_2000_acc_93_prob.pkl')
 left_bias = joblib.load('models/left_bias_tfidf_svc_2000_acc_86_prob.pkl')
 opinion_tfidf_svc = joblib.load('models/opinion_tfidf_svc_2000_acc_78_prob.pkl')
@@ -124,10 +108,6 @@ def get_metrics(url):
     df = get_text_from_url(url)
 
     pred_opinion = opinion_tfidf_svc.predict(df['text'])
-    
-    #X = tfidf_fit.transform(df['text']).toarray()
-    #pred_right_bias = right_bias.predict(X)
-    #pred_left_bias = left_bias.predict(X)
     pred_right_bias = right_bias.predict_proba(df['text'])
     pred_left_bias = left_bias.predict_proba(df['text'])
 

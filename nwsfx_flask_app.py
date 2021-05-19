@@ -1,6 +1,6 @@
 from flask import Flask, request
 import json
-# Ugly hack for __main___ error 
+# Ugly hack for __main___ error
 from clean import Lemmatizer
 from clean import clean_text
 import nwsfx
@@ -39,8 +39,8 @@ def model_info():
         """
         Available functions:
             - summary: date, author, title, summary, image
-            - entities: top 10 entities and their sentiments
             - metrics: return opinion (0 or 1), left and rigth bias
+            - entities: top 10 entities and their sentiments
 
         Expected JSON input:
         {
