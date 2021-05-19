@@ -1,6 +1,6 @@
 from flask import Flask, request
 import json
-# Ugly hack for __main___ error
+# Ugly hack for __main___ error 
 from clean import Lemmatizer
 from clean import clean_text
 import nwsfx
