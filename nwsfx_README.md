@@ -41,3 +41,5 @@ conda install pandas
     - cd Final-Project
     - export FLASK_APP=nwsfx_flask_app.py
     - flask run --host=0.0.0.0
+
+More info deployement in production on [codementor](https://www.codementor.io/@jqn/deploy-a-flask-app-on-aws-ec2-13hp1ilqy2)

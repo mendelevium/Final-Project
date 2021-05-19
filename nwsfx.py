@@ -1,19 +1,19 @@
 # general
 import pandas as pd
-import numpy as np
+#import numpy as np
 import re
 from collections import Counter
 import statistics
 
 # preprocessing
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.base import TransformerMixin, BaseEstimator
+#from sklearn.feature_extraction.text import TfidfVectorizer
+#from sklearn.base import TransformerMixin, BaseEstimator
 
 # nlp
 import newspaper
 #import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-from nltk.stem import WordNetLemmatizer
+#from nltk.stem import WordNetLemmatizer
 #import spacy
 #from spacy import displacy
 import en_core_web_sm
@@ -21,6 +21,7 @@ import en_core_web_sm
 # models
 import joblib
 #from tensorflow import keras
+
 
 
 # load pretrained models
@@ -139,35 +140,6 @@ def get_metrics(url):
     return m[0]
 
 if __name__ == "__main__":
-
-    class Lemmatizer(BaseEstimator, TransformerMixin):
-        def __init__(self):
-            self.lemmatizer = WordNetLemmatizer()
-
-        def fit(self, X, y):
-            return self
-
-        def transform(self, X):
-            return  X.apply(lambda text: " ".join([self.lemmatizer.lemmatize(word) for word in text.split()]))
-
-
-    def clean_text(text):
-        text = re.sub(r'<.*?>', '', text)
-        text = text.lower()
-        text = re.sub('\\s', ' ', text)
-        text = re.sub("[^a-zA-Z' ]", "", text)
-        text = re.sub(' +', ' ', text)
-        #text = text.split(' ')
-        return text
-
-    tfidf = TfidfVectorizer(
-        stop_words="english",
-        preprocessor=clean_text,
-        ngram_range=(1, 2),
-        max_df=0.95,
-        min_df=2,
-        max_features=2000
-    )
-    
+    print("run")
 else:
-    print("person mod is imported into another module")
+    print("import")
